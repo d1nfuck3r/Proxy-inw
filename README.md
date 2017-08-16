@@ -4,6 +4,8 @@
 # วิธีติดตั้ง
 ```
 # 1.ติดตั้ง สิ่งที่จำเป็น
+apt-get update && apt-get upgrade
+
 apt-get install build-essential nano
 
 # 2.เพิ่มกรุ๊ป
@@ -82,4 +84,27 @@ iptables -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3
 nano /usr/local/squid/etc/squid.conf
 
 # 2.มองหาบรรทัดนี้
+acl REDE_INTERNA src 192.168.0.0/24
 
+# 3.แล้ว Enter 1ครั้ง แล้วเพิ่มคำสั่งนี้ลงไป
+acl proxy url_regex -i "/usr/local/squid/etc/proxy.txt"
+
+# 4.มองหาบรรทัดนี้
+http_access allow REDE_INTERNA
+
+# 5.แล้ว Enter 1 ครั้ง แล้วเพิ่มคำสั่งนี้ลงไป
+http_access allow proxy
+
+# 6.มองหาบรรทัดนี้
+http_access allow all
+
+# 7.แก้ให้เป็นแบบนี้
+http_access deny all
+
+# 8.สร้างไฟล์สำหรับเพิ่มไอพี ให้เชื่อมต่อได้
+nano /usr/local/squid/etc/proxy.txt
+
+# 9.หยุด และ สั่ง รัน
+/usr/local/squid/sbin/squid -k kill
+
+/usr/local/squid/sbin/squid
