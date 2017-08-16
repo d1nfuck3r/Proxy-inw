@@ -108,3 +108,15 @@ nano /usr/local/squid/etc/proxy.txt
 /usr/local/squid/sbin/squid -k kill
 
 /usr/local/squid/sbin/squid
+
+```
+
+
+# อยากให้ไอพีไหนเชื่อมต่อได้ ให้เข้าไปเพิ่มไอพีนั้น ในนี้
+
+```
+/usr/local/squid/etc/proxy.txt
+
+```
+
+
