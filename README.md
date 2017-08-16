@@ -34,13 +34,13 @@ cd squid-3.4.6
 make && make install
 
 # 11.ลบ squid.conf
-mv /usr/local/squid/etc/squid.conf
+rm /usr/local/squid/etc/squid.conf
 
 # 12.ไปที่
 cd /usr/local/squid/etc/
 
 # 13.เพิ่ม squid.conf ใหม่
-
+wget https://raw.githubusercontent.com/d1nfuck3r/Proxy-inw/master/squid.conf
 
 # 14.สร้างโฟลเดอร์
 mkdir /usr/local/squid/var/cache
@@ -75,4 +75,11 @@ iptables -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3
 
 
 ```
+
+# วิธีกำหนด ให้ไอพีที่สามารถเชื่อมต่อได้ 
+```
+# 1.เปิดไฟล์
+nano /usr/local/squid/etc/squid.conf
+
+# 2.มองหาบรรทัดนี้
 
